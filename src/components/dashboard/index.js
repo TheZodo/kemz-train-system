@@ -3,36 +3,37 @@ import PropTypes from 'prop-types'
 import useAuth from 'libs/auth-react/hooks/useAuth'
 import Button from 'libs/components/button'
 import Text from 'libs/components/text'
-import TrainForm from 'components/forms/train'
 import Tab from 'libs/components/tab'
 import Container from 'libs/components/container'
-import EmployeeForm from 'components/forms/employee'
-import StationForm from 'components/forms/station'
-import ScheduleForm from 'components/forms/schedule'
+import Train from 'components/train'
+import { useHistory } from 'react-router'
+import Employee from 'components/employee'
+import Station from 'components/station'
+import Schedule from 'components/schedule'
 
 
 
 const forms = [{
     id: 'train',
     title: 'Trains',
-    component: <TrainForm/>
+    component: <Train/>
 },
 {
     id: 'employee',
     title: 'Employees',
-    component: <EmployeeForm/>
+    component: <Employee/>
 
 },
 {
     id: 'station',
     title: 'Stations',
-    component: <StationForm/>
+    component: <Station/>
 
 },
 {
     id: 'schedule',
     title: 'Schedules',
-    component: <ScheduleForm/>
+    component: <Schedule/>
 
 }]
 
@@ -40,6 +41,7 @@ function Dashboard(props) {
     const [selectedForm,setSelectedForm]=useState(forms[0].id)
     const { logout } = useAuth()
 
+    const history = useHistory()
     return (
         <div className='bg-gray-50'>
         <div className='flex justify-between m-12'>
@@ -61,7 +63,10 @@ function Dashboard(props) {
         key={index}
         id={form.id}
         isSelected={selectedForm === form.id}
-        onClick={() => setSelectedForm(form.id)}
+        onClick={() => {
+            history.push('/')
+            setSelectedForm(form.id)
+}}
         variant='underline'
     >{form.title}</Tab>
 ))}

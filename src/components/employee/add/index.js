@@ -6,10 +6,11 @@ import Text from 'libs/components/text'
 import Form from 'libs/components/form'
 import FieldInput from 'libs/components/fieldinput'
 import Card from 'libs/components/card'
-import { useMutation } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import ErrorAlert from 'libs/components/alert/error'
 import SuccessAlert from 'libs/components/alert/success'
+import { GET_EMPLOYEES } from '..'
 
 export const ADD_EMPLOYEE = gql`
 mutation($employee: EmployeeInput){
@@ -27,7 +28,10 @@ function EmployeeForm(props) {
 
 
     const [saveEmployee, {loading,error,data}] = useMutation(ADD_EMPLOYEE,{
-        onError: e=>console.log(e)
+        onError: e=>console.log(e),
+        refetchQueries: [
+            {query:GET_EMPLOYEES}
+        ]
     })
     return (
         <Card className='m-16 p-8'>
@@ -77,7 +81,7 @@ function EmployeeForm(props) {
            <ErrorAlert isShown={error}/>
 
            <SuccessAlert 
-           content='Successfully Saved Train!'
+           content='Successfully Saved Employee!'
            isShown={data && data.addEmployee}/>
         </Form>
         </Card>

@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
-    station_Id: String,
     station_Name: String,
     station_Description: String,
 

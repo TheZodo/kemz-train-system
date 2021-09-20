@@ -2,12 +2,12 @@ import React, { Suspense, useState } from 'react'
 import { Route, Switch } from 'react-router'
 import Loading from '../loading'
 import { isLoggedIn } from 'libs/utils/authUtil'
-const Login = React.lazy(() => import('./login'))
-const Register = React.lazy(() => import('./register'))
+
+import Login from './login'
+import Register from './register'
 
 
-
-function Auth({ logo, landingComponent, dashboardComponent, authProvider }) {
+function Auth({ logo, landingComponent, dashboardComponent, authProvider = <div/> }) {
 
     const [isAuthenticated] = useState(isLoggedIn())
 
@@ -18,9 +18,7 @@ function Auth({ logo, landingComponent, dashboardComponent, authProvider }) {
                 <Suspense fallback={<Loading screen />} >
                     {React.cloneElement(authProvider, {
                         children:
-                            <Suspense fallback={<Loading screen />} >
                                 <Login logo={logo} />
-                            </Suspense>
 
                     })}
                 </Suspense>
@@ -29,9 +27,7 @@ function Auth({ logo, landingComponent, dashboardComponent, authProvider }) {
                 <Suspense fallback={<Loading screen />} >
                     {React.cloneElement(authProvider, {
                         children:
-                            <Suspense fallback={<Loading screen />} >
                                 <Register logo={logo} />
-                            </Suspense>
 
                     })}
 
@@ -45,9 +41,7 @@ function Auth({ logo, landingComponent, dashboardComponent, authProvider }) {
                         <Suspense fallback={<Loading screen />} >
                             {React.cloneElement(authProvider, {
                                 children:
-                                    <Suspense fallback={<Loading screen />} >
-                                        {dashboardComponent}
-                                    </Suspense>
+                                        dashboardComponent
 
                             })
                             }
@@ -56,10 +50,7 @@ function Auth({ logo, landingComponent, dashboardComponent, authProvider }) {
 
 
                         :
-                        <Suspense fallback={<Loading screen />} >
-
-                            {landingComponent}
-                        </Suspense>
+                        landingComponent
 
 
                 }

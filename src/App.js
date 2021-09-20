@@ -12,10 +12,6 @@ function App() {
     <Switch>
       <Route path='/'>
         <Auth
-          authProvider={<AuthProvider
-            port={4002}
-            productionServerUrl=''
-          />}
           landingComponent={<Landing />}
           dashboardComponent={<Dashboard />}
           logo={<img src='' className={'h-16 w-16 p-2'} alt='' />}

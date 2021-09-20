@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import useAuth from 'libs/auth-react/hooks/useAuth'
 import Button from 'libs/components/button'
@@ -6,10 +6,12 @@ import Text from 'libs/components/text'
 import Form from 'libs/components/form'
 import FieldInput from 'libs/components/fieldinput'
 import Card from 'libs/components/card'
-import { useMutation } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import ErrorAlert from 'libs/components/alert/error'
 import SuccessAlert from 'libs/components/alert/success'
+import { useHistory } from 'react-router'
+import { GET_TRAINS } from '..'
 
 
 export const ADD_TRAIN = gql`
@@ -25,9 +27,17 @@ function TrainForm(props) {
     const [freightCapacity,setFreightCapacity] = useState('')
     const [model,setModel] = useState('')
 
+    const history = useHistory()
+
     const [saveTrain, {loading,error,data}] = useMutation(ADD_TRAIN,{
+        refetchQueries: [  
+            { query: GET_TRAINS }
+],
         onError: e=>console.log(e)
+        
     })
+
+    
     return (
         <Card className='m-16 p-8'>
         <Form onSubmit={()=>saveTrain({

@@ -6,10 +6,11 @@ import Text from 'libs/components/text'
 import Form from 'libs/components/form'
 import FieldInput from 'libs/components/fieldinput'
 import Card from 'libs/components/card'
-import { useMutation } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import ErrorAlert from 'libs/components/alert/error'
 import SuccessAlert from 'libs/components/alert/success'
+import { GET_SCHEDULES } from '..'
 
 export const ADD_SCHEDULE = gql`
 mutation($schedule: ScheduleInput){
@@ -25,7 +26,8 @@ function ScheduleForm(props) {
 
 
     const [saveSchedule, {loading,error,data}] = useMutation(ADD_SCHEDULE,{
-        onError: e=>console.log(e)
+        onError: e=>console.log(e),
+        refetchQueries: [{query: GET_SCHEDULES}]
     })
     return (
         <Card className='m-16 p-8'>
@@ -63,7 +65,7 @@ function ScheduleForm(props) {
            <ErrorAlert isShown={error}/>
 
            <SuccessAlert 
-           content='Successfully Saved Train!'
+           content='Successfully Saved Schedule!'
            isShown={data && data.addSchedule}/>
         </Form>
         </Card>

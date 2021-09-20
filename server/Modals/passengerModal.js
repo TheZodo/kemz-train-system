@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
-    passenger_Id: String,
     passenger_Fname: String,
     passenger_Lname: String,
     passenger_Phone: String,

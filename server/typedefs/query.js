@@ -5,6 +5,11 @@ module.exports = gql`
     user: User
     isPasswordResetValid(token: String): Boolean
     isLoggedIn:Boolean
+    trains: [Train]
+    stations: [Station]
+    schedules: [Schedule]
+    employees: [Employee]
+
   }
 `;
 

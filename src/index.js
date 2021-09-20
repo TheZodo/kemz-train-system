@@ -8,25 +8,31 @@ import theme from 'libs/components/theme'
 import { BrowserRouter } from 'react-router-dom';
 import { ApolloProvider } from '@apollo/client';
 import getApolloClient from 'libs/auth-react/getApolloClient';
+import AuthProvider from 'libs/auth-react/components/auth-provider';
 
 
-const client = getApolloClient({
-  port: 4002, productionServerUrl: ''
-})
 
 ReactDOM.render(
+  <AuthProvider
+      port={4002}
+      productionServerUrl='https://server.apaloans.co.zm/graphql'
+
+    >
   <React.StrictMode>
-        <ApolloProvider client={client} >
    
       <ThemeProvider theme={theme}>
         <BrowserRouter>
+
           <App />
+
         </BrowserRouter>
+
       </ThemeProvider>
 
-      </ApolloProvider>
 
-  </React.StrictMode >,
+  </React.StrictMode >
+  </AuthProvider>,
+
   document.getElementById('root')
 );
 
