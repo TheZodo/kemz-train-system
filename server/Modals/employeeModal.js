@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
-    email: String,
-    password: String,
-    resetPasswordToken: String,
-    resetPasswordExpires: String,
-    isLoggedIn: Boolean,
-    accessToken: String,
+    employee_Email: String,
+    employee_Id: String,
+    employee_Fname: String,
+    employee_Lname: String,
+    employee_Phone: String,
+    train_Id: String,
+    station_id: String
 })
 
-const model = mongoose.model('user', schema);
+const model = mongoose.model('employee', schema);
 
 module.exports = model;

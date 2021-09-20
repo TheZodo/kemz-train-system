@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
-    ticketId: int,
-    tickeTitle: String,
-    ticketType: String
- 
+    ticket_Id: int,
+    ticke_Title: String,
+    ticket_Type: String,
+    schedule_Id: String
+
 })
 
 const model = mongoose.model('ticket', schema);
