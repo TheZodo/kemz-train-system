@@ -2,6 +2,7 @@
 
 
 const { userResolvers } = require('../libs/auth');
+const trainResolvers = require('./trainResolvers');
 
 
 
@@ -10,5 +11,6 @@ const { userResolvers } = require('../libs/auth');
  * resolvers that are created should be added to this array
  ###########################################################*/
 module.exports = [
-    userResolvers
+    userResolvers,
+    trainResolvers
 ];

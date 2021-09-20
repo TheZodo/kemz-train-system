@@ -6,15 +6,25 @@ import reportWebVitals from './reportWebVitals';
 import { ThemeProvider } from 'styled-components';
 import theme from 'libs/components/theme'
 import { BrowserRouter } from 'react-router-dom';
+import { ApolloProvider } from '@apollo/client';
+import getApolloClient from 'libs/auth-react/getApolloClient';
+
+
+const client = getApolloClient({
+  port: 4002, productionServerUrl: ''
+})
 
 ReactDOM.render(
   <React.StrictMode>
+        <ApolloProvider client={client} >
    
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <App />
         </BrowserRouter>
       </ThemeProvider>
+
+      </ApolloProvider>
 
   </React.StrictMode >,
   document.getElementById('root')

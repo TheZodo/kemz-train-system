@@ -1,6 +1,7 @@
 const query = require("./query");
 const mutation = require("./mutation");
 const { userTypeDef } = require("../libs/auth");
+const train = require("./types/train");
 
 
 /*##########################################################
@@ -9,5 +10,6 @@ const { userTypeDef } = require("../libs/auth");
 module.exports = [
    query,
    mutation,
-   userTypeDef
+   userTypeDef,
+   train
 ];

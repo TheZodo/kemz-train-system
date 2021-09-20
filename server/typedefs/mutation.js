@@ -10,6 +10,7 @@ module.exports = gql`
     resetPassword(email: String):Int
     changeTokenPassword(token: String,password: String): User
     logout: Boolean 
+    addTrain(train: TrainInput): Boolean
 
   }
 `;
