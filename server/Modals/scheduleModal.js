@@ -8,6 +8,6 @@ const schema = mongoose.Schema({
 
 })
 
-const model = mongoose.model('employee', schema);
+const model = mongoose.model('schedule', schema);
 
 module.exports = model;

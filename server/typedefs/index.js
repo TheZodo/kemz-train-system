@@ -2,6 +2,9 @@ const query = require("./query");
 const mutation = require("./mutation");
 const { userTypeDef } = require("../libs/auth");
 const train = require("./types/train");
+const station = require("./types/station");
+const schedule = require("./types/schedule");
+const employee = require("./types/employee");
 
 
 /*##########################################################
@@ -11,5 +14,7 @@ module.exports = [
    query,
    mutation,
    userTypeDef,
-   train
+   train,
+   station,
+   schedule,employee
 ];

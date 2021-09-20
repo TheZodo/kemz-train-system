@@ -8,10 +8,10 @@ module.exports = {
     },
     Mutation: {
         addTrain: async (_, { train }, context) => {
-const model = new TrainModel
-model.seatCapacity = train.seatCapacity
-model.freightCapacity = train.freightCapacity
-model.model = train.model
+            const model = new TrainModel
+            model.train_Seat_Capacity = train.seatCapacity
+            model.train_Freight_Capacity = train.freightCapacity
+            model.train_Model = train.model
 
 await model.save()
 

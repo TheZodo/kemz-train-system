@@ -6,35 +6,65 @@ import Text from 'libs/components/text'
 import Form from 'libs/components/form'
 import FieldInput from 'libs/components/fieldinput'
 import Card from 'libs/components/card'
+import { useMutation } from '@apollo/client'
+import { gql } from 'apollo-boost'
+import ErrorAlert from 'libs/components/alert/error'
+import SuccessAlert from 'libs/components/alert/success'
 
-
+export const ADD_SCHEDULE = gql`
+mutation($schedule: ScheduleInput){
+  addSchedule(schedule: $schedule)
+}
+`
 
 function ScheduleForm(props) {
 
-    const [name,setName] = useState('')
-    const [description,setDescription] = useState('')
+    const [trainId,setTrainId] = useState('')
+    const [dTime,setDTime] = useState('')
+    const [aTime,setATime] = useState('')
 
+
+    const [saveSchedule, {loading,error,data}] = useMutation(ADD_SCHEDULE,{
+        onError: e=>console.log(e)
+    })
     return (
         <Card className='m-16 p-8'>
-        <Form >
+        <Form  onSubmit={()=>saveSchedule({
+               variables:{
+                   schedule:{
+                       trainId,
+                       dTime,
+                       aTime,
+                   }
+               }
+           })}>
             <Text type='heading-small' tailwind='mb-8'>
                 Add new Schedule
             </Text>
            <FieldInput
             tailwind='my-6'
+           onChange={text=>setTrainId(text)}
            label='Train Id'/>
 
 <FieldInput
             tailwind='my-6'
+           onChange={text=>setDTime(text)}
            label='Departure Time'/>
 
 <FieldInput
             tailwind='my-6'
+           onChange={text=>setATime(text)}
            label='Arrival Time'/>
-
-           <Button
+<Button
+           loading={loading}
             tailwind='my-6'
            typeSubmit>Save</Button>
+
+           <ErrorAlert isShown={error}/>
+
+           <SuccessAlert 
+           content='Successfully Saved Train!'
+           isShown={data && data.addSchedule}/>
         </Form>
         </Card>
     )

@@ -6,17 +6,37 @@ import Text from 'libs/components/text'
 import Form from 'libs/components/form'
 import FieldInput from 'libs/components/fieldinput'
 import Card from 'libs/components/card'
+import { useMutation } from '@apollo/client'
+import { gql } from 'apollo-boost'
+import ErrorAlert from 'libs/components/alert/error'
+import SuccessAlert from 'libs/components/alert/success'
 
 
+export const ADD_STATION = gql`
+mutation($station: StationInput){
+  addStation(station: $station)
+}
+`
 
 function StationForm(props) {
 
     const [name,setName] = useState('')
     const [description,setDescription] = useState('')
 
+    const [saveStation, {loading,error,data}] = useMutation(ADD_STATION,{
+        onError: e=>console.log(e)
+    })
+
     return (
         <Card className='m-16 p-8'>
-        <Form >
+        <Form  onSubmit={()=>saveStation({
+               variables:{
+                   station:{
+                       name,
+                       description
+                   }
+               }
+           })}>
             <Text type='heading-small' tailwind='mb-8'>
                 Add new Station
             </Text>
@@ -32,9 +52,18 @@ function StationForm(props) {
            onChange={text=>setDescription(text)}
            label='Station Description'/>
 
-           <Button
+<Button
+           loading={loading}
             tailwind='my-6'
            typeSubmit>Save</Button>
+
+           <ErrorAlert isShown={error}/>
+
+           <SuccessAlert 
+           content='Successfully Saved Train!'
+           isShown={data && data.addStation}/>
+
+
         </Form>
         </Card>
     )

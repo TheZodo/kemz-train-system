@@ -2,6 +2,9 @@
 
 
 const { userResolvers } = require('../libs/auth');
+const employeeResolvers = require('./employeeResolvers');
+const scheduleResolvers = require('./scheduleResolvers');
+const stationResolvers = require('./stationResolvers');
 const trainResolvers = require('./trainResolvers');
 
 
@@ -12,5 +15,8 @@ const trainResolvers = require('./trainResolvers');
  ###########################################################*/
 module.exports = [
     userResolvers,
-    trainResolvers
+    trainResolvers,
+    employeeResolvers,
+    stationResolvers,
+    scheduleResolvers
 ];
