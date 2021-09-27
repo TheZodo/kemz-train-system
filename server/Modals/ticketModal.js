@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
-    ticke_Title: String,
+    ticket_Title: String,
     ticket_Type: String,
     schedule_Id: String
 

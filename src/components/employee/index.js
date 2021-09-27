@@ -87,19 +87,19 @@ function Employee(props) {
 
             <SearchAction
                 className='mt-12'
-                buttonText='Add Employee'
+                buttonText='Add Staff'
                 onClick={() => {
                     history.push('/add')
                 }}
-                placeholder='Search Train'
+                placeholder='Search Staff Member'
             />
 
             {data &&
                 (data.employees.length > 0 &&
                     <CardWrapper
                         header={{
-                            heading: 'Employees',
-                            subHeading: 'list of employees'
+                            heading: 'Staff',
+                            subHeading: 'list of staff members'
                         }}
 
                         tailwind="mb-6">

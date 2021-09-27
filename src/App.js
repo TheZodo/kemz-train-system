@@ -5,11 +5,16 @@ import { Route, Switch } from 'react-router-dom';
 import Landing from 'components/landing';
 import Dashboard from 'components/dashboard';
 import AuthProvider from 'libs/auth-react/components/auth-provider';
+import BookTicket from 'components/book-ticket';
 
 
 function App() {
   return (
     <Switch>
+      <Route path='/ticket'>
+        <BookTicket />
+      </Route>
+
       <Route path='/'>
         <Auth
           landingComponent={<Landing />}

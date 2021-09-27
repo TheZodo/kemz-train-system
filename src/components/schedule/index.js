@@ -26,6 +26,10 @@ query{
       trainId
       dTime
       aTime
+      booked{
+        freight
+        passenger
+      }
   }
 }
 `
@@ -103,7 +107,7 @@ function Schedule(props) {
 
                         tailwind="mb-6">
                         <div
-                            className={`grid grid-cols-5 py-4 px-6 border-b border-gray-200`}
+                            className={`grid grid-cols-7 py-4 px-6 border-b border-gray-200`}
                         >
  <DataText
                                 color
@@ -114,6 +118,14 @@ function Schedule(props) {
                             <DataText
                                 color
                                 tailwind='font-medium text-gray-800 mr-8'>Arrival Time</DataText>
+
+<DataText
+                                color
+                                tailwind='font-medium text-gray-800 mr-8'>Freight Tickets</DataText>
+
+<DataText
+                                color
+                                tailwind='font-medium text-gray-800 mr-8'>Passenger Tickets</DataText>
      </div>
 
                         {errorAlert}

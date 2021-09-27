@@ -6,6 +6,8 @@ const employeeResolvers = require('./employeeResolvers');
 const scheduleResolvers = require('./scheduleResolvers');
 const stationResolvers = require('./stationResolvers');
 const trainResolvers = require('./trainResolvers');
+const ticketResolvers = require('./ticketResolvers');
+
 
 
 
@@ -18,5 +20,6 @@ module.exports = [
     trainResolvers,
     employeeResolvers,
     stationResolvers,
-    scheduleResolvers
+    scheduleResolvers,
+    ticketResolvers
 ];

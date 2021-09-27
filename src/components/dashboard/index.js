@@ -20,7 +20,7 @@ const forms = [{
 },
 {
     id: 'employee',
-    title: 'Employees',
+    title: 'Staff',
     component: <Employee/>
 
 },

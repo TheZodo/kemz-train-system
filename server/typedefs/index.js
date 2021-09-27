@@ -7,6 +7,7 @@ const schedule = require("./types/schedule");
 const employee = require("./types/employee");
 
 
+
 /*##########################################################
  * types that are created should be added to this array
  ###########################################################*/
@@ -16,5 +17,5 @@ module.exports = [
    userTypeDef,
    train,
    station,
-   schedule,employee
+   schedule, employee
 ];

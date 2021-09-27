@@ -18,6 +18,7 @@ module.exports = gql`
     deleteEmployee(id: String): Boolean
     deleteSchedule(id: String): Boolean
     deleteStation(id: String): Boolean
+    addTicket(scheduleId: String,ticketType: String): Boolean
 
 
   }

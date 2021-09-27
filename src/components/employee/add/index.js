@@ -81,7 +81,7 @@ function EmployeeForm(props) {
            <ErrorAlert isShown={error}/>
 
            <SuccessAlert 
-           content='Successfully Saved Employee!'
+           content='Successfully Saved Staff!'
            isShown={data && data.addEmployee}/>
         </Form>
         </Card>

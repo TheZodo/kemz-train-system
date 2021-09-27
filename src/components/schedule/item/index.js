@@ -11,30 +11,35 @@ import useDeleteHandler from 'components/hooks/useDeleteHandler'
 
 
 
-function Item({ trainId,dTime,aTime , _id, onEdit, onDelete, isGray, loading}) {
+function Item({ trainId, dTime, aTime, _id, booked, onDelete, isGray, loading }) {
 
-   
+
 
     return (
         <div>
 
             <Wrapper isGray={isGray}
-                tailwind={`grid grid-cols-5  py-4 px-2 lg:px-6 items-center juustify-center `}>
+                tailwind={`grid grid-cols-7  py-4 px-2 lg:px-6 items-center juustify-center `}>
                 <DataText
-                tailwind='col-span-2'
+                    tailwind='col-span-2'
                 >  {trainId}</DataText>
                 <DataText
                     tailwind=' mr-8'     > {dTime} </DataText>
                 <DataText
 
                     tailwind=''>  {aTime}</DataText>
+                <DataText
 
+                    tailwind=''>  {booked.freight}</DataText>
+                <DataText
+
+                    tailwind=''>  {booked.passenger}</DataText>
 
                 {!loading &&
 
                     <div className='flex justify-center items-center  '>
 
-{/**
+                        {/**
                         <IconButton
                             tailwind='mx-1 lg:mx-4 text-gray-400'
                             color
